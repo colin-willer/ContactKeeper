@@ -1,4 +1,4 @@
 {
-	"mongoURI": "mongodb+srv://AdminColin:<password>@contactkeeper.xriyg.mongodb.net/<dbname>?retryWrites=true&w=majority",
+	"mongoURI": "mongodb+srv://AdminColin:w84cNPOguzMYQMfj@contactkeeper.xriyg.mongodb.net/<dbname>?retryWrites=true&w=majority",
 	"jwtSecret": "jsonwebtokensecretkey"
 }
