@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 	const [ user, setUser ] = useState({
@@ -23,13 +24,16 @@ const Login = () => {
 			<form onSubmit={onSubmit}>
 				<div className="form-group">
 					<label htmlFor="email">Email Address</label>
-					<input type="email" name="email" value={email} onChange={onChange} />
+					<input type="email" name="email" value={email} onChange={onChange} required />
 				</div>
 				<div className="form-group">
 					<label htmlFor="password">Password </label>
-					<input type="password" name="password" value={password} onChange={onChange} />
+					<input type="password" name="password" value={password} onChange={onChange} required />
 				</div>
 				<input type="submit" value="Login" className="btn btn-primary btn-block" />
+				<p className="text-center">
+					New to ContackKeeper? <Link to="/register">Register New Account</Link>
+				</p>
 			</form>
 		</div>
 	);

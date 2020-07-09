@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AlertContext from '../../context/alert/alertContext';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+	const alertContext = useContext(AlertContext);
+
+	const { setAlert } = alertContext;
+
 	const [ user, setUser ] = useState({
 		name: '',
 		email: '',
@@ -14,7 +20,15 @@ const Register = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		console.log('Register Submitted');
+		if (name === '' || email === '' || password === '') {
+			setAlert('Please enter all fields', 'danger');
+		} else if (password !== password2) {
+			setAlert('Passwords do not match', 'danger');
+		} else if (password.length < 6) {
+			setAlert('Password must be greater than 6 characters', 'danger');
+		} else {
+			console.log('Register Submitted');
+		}
 	};
 
 	return (
@@ -40,6 +54,9 @@ const Register = () => {
 					<input type="password" name="password2" value={password2} onChange={onChange} />
 				</div>
 				<input type="submit" value="Register" className="btn btn-primary btn-block" />
+				<p className="text-center">
+					Already have an account? <Link to="/login">Login</Link>
+				</p>
 			</form>
 		</div>
 	);
